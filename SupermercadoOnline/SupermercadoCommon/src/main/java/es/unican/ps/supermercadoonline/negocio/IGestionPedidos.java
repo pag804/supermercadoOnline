@@ -7,6 +7,6 @@ import javax.ejb.Remote;
 @Remote
 public interface IGestionPedidos {
 	public Pedido confirmaPedido();
-	public boolean anhadeArticuloAPedido(Articulo a);
+	public boolean anhadeArticuloAPedido(Articulo a, int unidades);
 	public Pedido consultaPedido();
 }

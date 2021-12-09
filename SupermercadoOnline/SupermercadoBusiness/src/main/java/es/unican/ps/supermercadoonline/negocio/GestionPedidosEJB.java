@@ -46,7 +46,7 @@ public class GestionPedidosEJB implements IGestionPedidos {
 		return null;
 	}
 
-	public boolean anhadeArticuloAPedido(Articulo a) {
+	public boolean anhadeArticuloAPedido(Articulo a, int unidades) {
 		// TODO Auto-generated method stub
 		//Añade un articulo al set
 		return false;
