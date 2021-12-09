@@ -6,7 +6,7 @@ public class Usuario {
 	
 	//Atributos
 	private String nombre;
-	private String dni;
+	private String dni; //Pk
 	private String direccion;
 	private String email;
 	private int comprasMensuales;

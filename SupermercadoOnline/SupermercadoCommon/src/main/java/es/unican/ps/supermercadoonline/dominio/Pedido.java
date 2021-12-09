@@ -7,6 +7,7 @@ import java.time.LocalTime;
 public class Pedido {
 	
 	//Atributos
+	private long id;//PK
 	private String referencia;
 	private EstadoPedido estado;
 	private LocalDate fecha;

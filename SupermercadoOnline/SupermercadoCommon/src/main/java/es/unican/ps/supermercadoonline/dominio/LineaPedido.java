@@ -3,6 +3,7 @@ package es.unican.ps.supermercadoonline.dominio;
 public class LineaPedido {
 
 	//Atributos
+	private long id;
 	private int cantidad;
 	private Articulo articulo;
 	

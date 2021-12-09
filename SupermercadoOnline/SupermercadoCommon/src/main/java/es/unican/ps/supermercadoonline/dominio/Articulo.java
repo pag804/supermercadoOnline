@@ -1,8 +1,9 @@
 package es.unican.ps.supermercadoonline.dominio;
 
 public class Articulo {
-	
+	//REVISAR TODAS LAS PKS
 	//Atributos
+	private long id;
 	private String nombre;
 	private int unidadesStock;
 	private double precio;
@@ -15,6 +16,13 @@ public class Articulo {
 	}
 
 	//Getters y setters
+	public long getid() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 	public String getNombre() {
 		return nombre;
