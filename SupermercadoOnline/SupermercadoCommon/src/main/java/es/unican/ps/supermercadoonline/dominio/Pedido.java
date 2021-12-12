@@ -26,6 +26,11 @@ public class Pedido {
 		this.usuario = usuario;
 	}
 	
+	public Pedido (LocalTime horaRecogida) {
+		this.horaRecogida = horaRecogida;
+	}
+	
+	
 	//Getter y Setters
 	public String getReferencia() {
 		return referencia;
@@ -63,7 +68,5 @@ public class Pedido {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
 	
 }
