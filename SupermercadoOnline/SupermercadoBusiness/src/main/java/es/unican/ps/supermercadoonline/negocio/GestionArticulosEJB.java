@@ -18,6 +18,13 @@ public class GestionArticulosEJB implements IGestionArticulos {
 	public GestionArticulosEJB(IArticulosDAO articulosDao) {
 		this.articulosDao = articulosDao;
 	}
+	
+	
+
+	public GestionArticulosEJB() {
+	}
+
+
 
 	public Articulo creaArticulo(Articulo a) throws ArticuloExistenteException {
 		if (articulosDao.articuloPorNombre(a.getNombre()) != null) {

@@ -17,6 +17,13 @@ public class GestionUsuariosEJB implements IGestionUsuarios {
 	public GestionUsuariosEJB(IUsuariosDAO usuariosDao) {
 		this.usuariosDao = usuariosDao;
 	}
+	
+	
+
+	public GestionUsuariosEJB() {
+	}
+
+
 
 	public Usuario registrarse(Usuario u) throws UsuarioExistenteException {
 		if (usuariosDao.usuarioPorDNI(u.getDni()) != null) {

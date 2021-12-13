@@ -3,6 +3,8 @@ package BusinessLayerTest;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -33,6 +35,7 @@ public class GestionPedidosEJBTest {
 
 	@Mock
 	private static IUsuariosDAO usuariosDaoMock;
+	
 	@Mock
 	private static IPedidosDAO pedidosDaoMock;
 	
@@ -47,7 +50,7 @@ public class GestionPedidosEJBTest {
 		usuariosDaoMock = mock(IUsuariosDAO.class) ;
 		pedidosDaoMock = mock(IPedidosDAO.class);
 		
-		u1 = new Usuario("Jose Manuel Garcia Sanchez", "27516415G",  "josemanuel@gmail.com", "Calle Castilla 36", 0, null);
+		u1 = new Usuario("Jose Manuel Garcia Sanchez", "27516415G",  "josemanuel@gmail.com", "Calle Castilla 36", 0, new ArrayList<Pedido>());
 		u2 = null;
 		horaRecoger = LocalTime.of(17,50);
 		
@@ -75,6 +78,11 @@ public class GestionPedidosEJBTest {
 		//UGP.1c
 		sut.iniciaPedido(u1);
 		assertEquals(sut.confirmaPedido(LocalTime.of(23,0)), null);
+		
+		//Verificamos que se llama a ciertos métodos de los mocks las veces correspondientes
+		verify(pedidosDaoMock, times(1)).creaPedido((Pedido)any());
+		
+		verify(usuariosDaoMock, times(1)).modificaUsuario((Usuario)any());
 	}
 
 }

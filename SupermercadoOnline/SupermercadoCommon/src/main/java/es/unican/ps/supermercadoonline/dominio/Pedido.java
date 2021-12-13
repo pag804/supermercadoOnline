@@ -14,6 +14,7 @@ public class Pedido {
 	private LocalTime horaRecogida;
 	private List<LineaPedido> lineasPedido;
 	private Usuario usuario;
+	private double precio;
 	
 	//Constructor
 	public Pedido(String referencia, EstadoPedido estado, LocalDate fecha, LocalTime horaRecogida,
@@ -24,6 +25,7 @@ public class Pedido {
 		this.horaRecogida = horaRecogida;
 		this.lineasPedido = lineasPedido;
 		this.usuario = usuario;
+		this.precio = 0;
 	}
 	
 	public Pedido (LocalTime horaRecogida) {
@@ -67,6 +69,14 @@ public class Pedido {
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 	
 }

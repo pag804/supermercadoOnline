@@ -42,7 +42,7 @@ public class GestionPedidosEJB implements IGestionPedidos {
 	}
 
 	public GestionPedidosEJB() {
-		//articulosPedidos = new ArrayList<LineaPedido>();
+		articulosPedidos = new ArrayList<LineaPedido>();
 	}
 
 	public Pedido confirmaPedido(LocalTime horaRecogida) { //Horas se pasan como parámetro 
@@ -65,6 +65,8 @@ public class GestionPedidosEJB implements IGestionPedidos {
 		if (pedidosDao.creaPedido(pedido) == null) {
 			return null;
 		};
+		usuarioPedido.getPedidos().add(pedido);
+		usuariosDao.modificaUsuario(usuarioPedido);
 		return pedido;
 	}
 

@@ -12,6 +12,7 @@
   <modules>
   	<module>SupermercadoCommon</module>
   	<module>SupermercadoBusiness</module>
+  	<module>SupermercadoEar</module>
   </modules>
   
   	<dependencies>

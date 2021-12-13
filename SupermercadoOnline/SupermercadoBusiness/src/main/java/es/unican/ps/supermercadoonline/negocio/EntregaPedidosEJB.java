@@ -22,6 +22,11 @@ public class EntregaPedidosEJB implements IEntregaPedidos {
 		this.pedidosDao = pedidosDao;
 		this.usuariosDao = usuariosDao;
 	}
+	
+	public EntregaPedidosEJB() {
+	}
+
+
 
 	public Pedido entregarPedido(String dni, Pedido p) {
 		Usuario u = usuariosDao.usuarioPorDNI(dni);
