@@ -10,7 +10,21 @@
 	<artifactId>SupermercadoEar</artifactId>
 
 	<packaging>ear</packaging>
-	
+
+	<dependencies>
+		<dependency>
+			<groupId>es.unican.ps</groupId>
+			<artifactId>SupermercadoBusiness</artifactId>
+			<version>0.0.1</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>es.unican.ps</groupId>
+			<artifactId>SupermercadoCommon</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<finalName>SupermercadoEar</finalName>
 		<plugins>
@@ -33,16 +47,16 @@
 				<version>3.1.0</version>
 				<configuration>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
-					<modules> <!--Poner los modulos supermercadoBusiness y supermercadoCommon-->
+					<modules> <!--Poner los modulos supermercadoBusiness y supermercadoCommon -->
 						<ejbModule>
 							<groupId>es.unican.ps</groupId>
-							<artifactId>CalculadoraBusiness</artifactId>
+							<artifactId>SupermercadoBusiness</artifactId>
 						</ejbModule>
 						<!-- Este módulo es solo una librería, se añade como jarModule de modo 
 							que se añade a la carpeta lib del ear -->
 						<jarModule>
 							<groupId>es.unican.ps</groupId>
-							<artifactId>CalculadoraCommon</artifactId>
+							<artifactId>SupermercadoCommon</artifactId>
 						</jarModule>
 					</modules>
 				</configuration>
