@@ -1,16 +1,25 @@
 package es.unican.ps.supermercadoonline.dominio;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Usuario {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Usuario implements Serializable { //Se mapea en la tabla Usuario
 	
 	//Atributos
 	private String nombre;
+	@Id
 	private String dni; //Pk
 	private String direccion;
 	private String email;
 	private int comprasMensuales;
-	private List<Pedido> pedidos;
+	
+	@OneToMany(mappedBy="usuario")
+	private List<Pedido> pedidos;//Relacion
 	
 	//Constructor
 	public Usuario(String nombre, String dni, String direccion, String email, int comprasMensuales,

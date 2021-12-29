@@ -3,13 +3,12 @@ package es.unican.ps.supermercadoonline.dominio;
 import java.util.List;
 import java.time.LocalTime;
 
-public class Supermercado {
 
-	//Atributos
+public class Supermercado { //No es necesario persistir esta entidad
 	private LocalTime horaApertura;
 	private LocalTime horaCierre;
-	private List<Articulo> articulos;
-	private List<Usuario> usuarios;
+	private List<Articulo> articulos; 
+	private List<Usuario> usuarios; 
 	
 	//Constructor
 	public Supermercado(LocalTime horaApertura, LocalTime horaCierre, List<Articulo> articulos,

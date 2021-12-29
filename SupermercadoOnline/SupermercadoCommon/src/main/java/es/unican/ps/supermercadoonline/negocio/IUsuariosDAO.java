@@ -11,5 +11,4 @@ public interface IUsuariosDAO {
 	public List<Usuario> usuarios();
 	public Usuario modificaUsuario(Usuario u);
 	public Usuario eliminaUsuario(Usuario u);
-	public Usuario usuarioPorId(long id);
 }

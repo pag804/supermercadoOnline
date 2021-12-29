@@ -1,8 +1,17 @@
 package es.unican.ps.supermercadoonline.dominio;
 
-public class Articulo {
-	//REVISAR TODAS LAS PKS
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Articulo implements Serializable { //Se mapeará en una tabla que se llama Articulo
+
 	//Atributos
+	@Id
+	@GeneratedValue
 	private long id;
 	private String nombre;
 	private int unidadesStock;

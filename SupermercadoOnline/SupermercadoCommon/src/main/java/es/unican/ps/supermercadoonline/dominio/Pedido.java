@@ -1,19 +1,51 @@
 package es.unican.ps.supermercadoonline.dominio;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Pedido {
+
+@Entity
+public class Pedido implements Serializable {
 	
 	//Atributos
+	@Id
+	@GeneratedValue
 	private long id;//PK
 	private String referencia;
-	private EstadoPedido estado;
+	
+	@Enumerated(EnumType.STRING)
+	private EstadoPedido estado; //El enumerado se almacena como un string
+	
+	@Column(columnDefinition = "DATE")
 	private LocalDate fecha;
+	@Column(columnDefinition = "TIME")
 	private LocalTime horaRecogida;
-	private List<LineaPedido> lineasPedido;
-	private Usuario usuario;
+	
+	@OneToMany (cascade = CascadeType.ALL)
+	@JoinTable(name="Lineas_x_pedido", 
+	joinColumns=@JoinColumn(name="pedido_FK"),
+	inverseJoinColumns=@JoinColumn(name="linea_FK")) //Tabla intermedia, lineas_x_pedido
+	private List<LineaPedido> lineasPedido; //Relacion
+	
+	@ManyToOne
+	@JoinColumn(name="usuario_FK")
+	private Usuario usuario; //FK
 	private double precio;
 	
 	//Constructor
