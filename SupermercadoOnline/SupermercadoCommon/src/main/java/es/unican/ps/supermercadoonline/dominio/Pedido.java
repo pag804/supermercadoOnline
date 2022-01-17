@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -21,6 +23,7 @@ import java.time.LocalTime;
 
 
 @Entity
+@Table(name="Pedido")
 public class Pedido implements Serializable {
 	
 	//Atributos
@@ -37,10 +40,8 @@ public class Pedido implements Serializable {
 	@Column(columnDefinition = "TIME")
 	private LocalTime horaRecogida;
 	
-	@OneToMany (cascade = CascadeType.ALL)
-	@JoinTable(name="Lineas_x_pedido", 
-	joinColumns=@JoinColumn(name="pedido_FK"),
-	inverseJoinColumns=@JoinColumn(name="linea_FK")) //Tabla intermedia, lineas_x_pedido
+	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="pedido_FK")
 	private List<LineaPedido> lineasPedido; //Relacion
 	
 	@ManyToOne
@@ -49,6 +50,10 @@ public class Pedido implements Serializable {
 	private double precio;
 	
 	//Constructor
+	public Pedido() {
+		
+	}
+	
 	public Pedido(String referencia, EstadoPedido estado, LocalDate fecha, LocalTime horaRecogida,
 			List<LineaPedido> lineasPedido, Usuario usuario) {
 		this.referencia = referencia;
@@ -60,6 +65,7 @@ public class Pedido implements Serializable {
 		this.precio = 0;
 	}
 	
+	
 	public Pedido (LocalTime horaRecogida) {
 		this.horaRecogida = horaRecogida;
 	}
@@ -69,6 +75,15 @@ public class Pedido implements Serializable {
 	public String getReferencia() {
 		return referencia;
 	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public void setReferencia(String referencia) {
 		this.referencia = referencia;
 	}

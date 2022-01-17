@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="LineaPedido")
 public class LineaPedido implements Serializable { //Se mapea en una tabla LineaPedido
 
 	//Atributos
@@ -20,16 +22,31 @@ public class LineaPedido implements Serializable { //Se mapea en una tabla Linea
     @JoinColumn(name = "articulo_FK")
 	private Articulo articulo; //Fk
 	
+	public LineaPedido() {
+		
+	}
+	
 	//Constructor
 	public LineaPedido(int cantidad, Articulo articulo) {
 		this.cantidad = cantidad;
 		this.articulo = articulo;
 	}
 	
+	
+	
 	//Getter y setters
 	public int getCantidad() {
 		return cantidad;
 	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}

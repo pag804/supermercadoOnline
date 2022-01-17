@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>es.unican.ps</groupId>
+		<artifactId>SupermercadoOnline</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<packaging>ear</packaging>
+	<artifactId>SupermercadoEarCompleto</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>es.unican.ps</groupId>
+			<artifactId>SupermercadoBusiness</artifactId>
+			<version>0.0.1</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>es.unican.ps</groupId>
+			<artifactId>SupermercadoCommon</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>es.unican.ps</groupId>
+			<artifactId>SupermercadoDAO</artifactId>
+			<version>0.0.1</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>es.unican.ps</groupId>
+			<artifactId>SupermercadoWeb</artifactId>
+			<version>0.0.1</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>SupermercadoEar</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<!-- The ear plugin must include the definition for "modules", for any 
+				modules that are needed to be included in the EAR file, you need to specify 
+				them one by one, e.g. "ejbModule", "webModule", "jarModule" and "appClientModule". -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<ejbModule>
+							<groupId>es.unican.ps</groupId>
+							<artifactId>SupermercadoBusiness</artifactId>
+						</ejbModule>
+						<ejbModule>
+							<groupId>es.unican.ps</groupId>
+							<artifactId>SupermercadoDAO</artifactId>
+						</ejbModule>
+						<webModule>
+							<groupId>es.unican.ps</groupId>
+							<artifactId>SupermercadoWeb</artifactId>
+						</webModule>
+						<!-- Este módulo es solo una librería, se añade como jarModule de modo 
+							que se añade a la carpeta lib del ear -->
+						<jarModule>
+							<groupId>es.unican.ps</groupId>
+							<artifactId>SupermercadoCommon</artifactId>
+						</jarModule>
+					</modules>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>

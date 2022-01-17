@@ -1,22 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>es.unican.ps</groupId>
-  <artifactId>SupermercadoOnline</artifactId>
-  <version>0.0.1</version>
-  
-  <!-- Packaging pom porque es el proyecto raiz -->
-  <packaging>pom</packaging>
-  
-  <!-- Lista de módulos anidados -->
-  <modules>
-  	<module>SupermercadoCommon</module>
-  	<module>SupermercadoBusiness</module>
-  	<module>SupermercadoEar</module>
-  	<module>SupermercadoDAO</module>
-  </modules>
-  
-  	<dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>es.unican.ps</groupId>
+	<artifactId>SupermercadoOnline</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>SupermercadoCommon</module>
+		<module>SupermercadoBusiness</module>
+		<module>SupermercadoEar</module>
+		<module>SupermercadoDAO</module>
+		<module>SupermercadoIntegrationTest</module>
+		<module>SupermercadoWeb</module>
+		<module>SupermercadoEarCompleto</module>
+	</modules>
+	<dependencies>
 
 		<!-- Pruebas unitarias con JUnit -->
 		<dependency>
@@ -56,14 +55,13 @@
 		<plugins>
 
 			<!-- Plugin necesario para ejecutar pruebas de integración Por defecto, 
-				ejecuta en la fase integration-test las clases terminadas en IT 
-				(se puede modificar en configuration.) -->
+				ejecuta en la fase integration-test las clases terminadas en IT (se puede 
+				modificar en configuration.) -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<configuration>
-					<!-- Necesario para que ejecute de manera correcta varios 
-						test seguidos -->
+					<!-- Necesario para que ejecute de manera correcta varios test seguidos -->
 					<forkMode>perTest</forkMode>
 					<!--<jvm>C:\Program Files\Java\jdk1.8.0_73\bin\java</jvm> -->
 				</configuration>
@@ -80,5 +78,5 @@
 
 		</plugins>
 	</build>
-  
+
 </project>

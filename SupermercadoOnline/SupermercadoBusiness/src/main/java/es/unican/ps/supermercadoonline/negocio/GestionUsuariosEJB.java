@@ -12,13 +12,13 @@ public class GestionUsuariosEJB implements IGestionUsuarios {
 	//DAOs que utiliza
 	@EJB
 	private IUsuariosDAO usuariosDao;
-	
+
 	//Constructor
 	public GestionUsuariosEJB(IUsuariosDAO usuariosDao) {
 		this.usuariosDao = usuariosDao;
 	}
-	
-	
+
+
 
 	public GestionUsuariosEJB() {
 	}
@@ -32,12 +32,8 @@ public class GestionUsuariosEJB implements IGestionUsuarios {
 		return usuariosDao.creaUsuario(u);
 	}
 
-	public boolean login(String dni) {
-		if (usuariosDao.usuarioPorDNI(dni) == null) {
-			return false;
-		} else {
-			return true;
-		}
+	public Usuario login(String dni) {
+		return usuariosDao.usuarioPorDNI(dni);
 	}
 
 }

@@ -6,8 +6,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Usuario")
 public class Usuario implements Serializable { //Se mapea en la tabla Usuario
 	
 	//Atributos
@@ -22,6 +24,10 @@ public class Usuario implements Serializable { //Se mapea en la tabla Usuario
 	private List<Pedido> pedidos;//Relacion
 	
 	//Constructor
+	public Usuario() {
+		
+	}
+	
 	public Usuario(String nombre, String dni, String direccion, String email, int comprasMensuales,
 			List<Pedido> pedidos) {
 		this.nombre = nombre;

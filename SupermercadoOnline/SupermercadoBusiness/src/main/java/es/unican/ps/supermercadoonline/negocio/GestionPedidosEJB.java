@@ -62,21 +62,31 @@ public class GestionPedidosEJB implements IGestionPedidos {
 		//Devuelve un new pedido con la lista de articulos
 		LocalDate date = LocalDate.now();
 		Pedido pedido = new Pedido(usuarioPedido.getDni() + horaRecogida.toString(), EstadoPedido.REALIZADO, date, horaRecogida, articulosPedidos, usuarioPedido); // Metodo para coger el usuario en la vista
-		//Hay que añadir el pedido al usuario también????
+		double precioT = 0;
+		for (LineaPedido lineaPedido : articulosPedidos) {
+			precioT += lineaPedido.getArticulo().getPrecio() * lineaPedido.getCantidad();
+		}
+		
+		if (usuarioPedido.getComprasMensuales() > 10) {
+			precioT = 0.95*precioT;
+		}
+		pedido.setPrecio(precioT);
 		if (pedidosDao.creaPedido(pedido) == null) {
 			return null;
 		};
-		usuarioPedido.getPedidos().add(pedido);
+		//Sumar compras mensuales
+		usuarioPedido.setComprasMensuales(usuarioPedido.getComprasMensuales() + 1);
 		usuariosDao.modificaUsuario(usuarioPedido);
 		return pedido;
 	}
 
 	public boolean anhadeArticuloAPedido(Articulo a, int unidades) {
-		if (a != null && (a.getUnidadesStock() >= unidades || unidades > 0)) {
-			LineaPedido lp = new LineaPedido(unidades, a);
+		Articulo a1 = articulosDao.articuloPorNombre(a.getNombre());
+		if (a1 != null && (a1.getUnidadesStock() >= unidades || unidades > 0)) {
+			LineaPedido lp = new LineaPedido(unidades, a1);
 			articulosPedidos.add(lp);
-			a.setUnidadesStock(a.getUnidadesStock() - unidades);
-			articulosDao.modificaArticulo(a);
+			a1.setUnidadesStock(a1.getUnidadesStock() - unidades);
+			articulosDao.modificaArticulo(a1);
 			return true;
 		}
 		return false;

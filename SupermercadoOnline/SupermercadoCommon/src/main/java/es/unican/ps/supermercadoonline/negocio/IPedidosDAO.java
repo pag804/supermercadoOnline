@@ -2,9 +2,11 @@ package es.unican.ps.supermercadoonline.negocio;
 
 import java.util.List;
 import es.unican.ps.supermercadoonline.dominio.Pedido;
+
+import javax.ejb.Local;
 import javax.ejb.Remote;
 
-@Remote
+@Local
 public interface IPedidosDAO {
 	public Pedido creaPedido(Pedido p);
 	public Pedido pedidoPorReferencia(String referencia);

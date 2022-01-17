@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Articulo Seleccionado</title>
+</h:head>
+<h:body>
+	<h1>Articulo Seleccionado</h1>
+	<br></br>
+	<br></br>
+	<h:form>
+		<h:outputFormat value="Articulo: {0}">
+			<f:param value="#{supermercadoBean.articuloSeleccionado.nombre}" />
+		</h:outputFormat>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Unidades: " />
+			<h:inputText id="unidades" value="#{supermercadoBean.unidades}">
+				<f:validateLongRange minimum="1"
+					maximum="#{supermercadoBean.articuloSeleccionado.unidadesStock}" />
+			</h:inputText>
+		</h:panelGrid>
+		<br></br>
+		<h:message style="color:red" for="unidades" />
+		<br></br>
+		<h:commandButton id="buttonVolver" value="Volver"
+			action="#{supermercadoBean.volver}" style="width: 200px; " />
+		<h:commandButton id="buttonAdd2Cart" value="Anhadir a carro"
+			action="#{supermercadoBean.addtocart}" style="width: 200px; " />
+
+	</h:form>
+</h:body>
+</html>

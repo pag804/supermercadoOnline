@@ -8,9 +8,9 @@
 		<version>0.0.1</version>
 	</parent>
 	<artifactId>SupermercadoEar</artifactId>
-
 	<packaging>ear</packaging>
-
+	<!-- The dependencies for EAR module should include all these sub-modules 
+		that are needed to be packaged into the ear file like the ones below... -->
 	<dependencies>
 		<dependency>
 			<groupId>es.unican.ps</groupId>
@@ -22,6 +22,12 @@
 			<groupId>es.unican.ps</groupId>
 			<artifactId>SupermercadoCommon</artifactId>
 			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>es.unican.ps</groupId>
+			<artifactId>SupermercadoDAO</artifactId>
+			<version>0.0.1</version>
+			<type>ejb</type>
 		</dependency>
 	</dependencies>
 
@@ -47,10 +53,14 @@
 				<version>3.1.0</version>
 				<configuration>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
-					<modules> <!--Poner los modulos supermercadoBusiness y supermercadoCommon -->
+					<modules>
 						<ejbModule>
 							<groupId>es.unican.ps</groupId>
 							<artifactId>SupermercadoBusiness</artifactId>
+						</ejbModule>
+						<ejbModule>
+							<groupId>es.unican.ps</groupId>
+							<artifactId>SupermercadoDAO</artifactId>
 						</ejbModule>
 						<!-- Este módulo es solo una librería, se añade como jarModule de modo 
 							que se añade a la carpeta lib del ear -->
@@ -61,6 +71,7 @@
 					</modules>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>

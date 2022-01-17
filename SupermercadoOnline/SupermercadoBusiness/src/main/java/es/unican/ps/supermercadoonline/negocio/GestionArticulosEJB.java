@@ -1,5 +1,7 @@
 package es.unican.ps.supermercadoonline.negocio;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -46,6 +48,12 @@ public class GestionArticulosEJB implements IGestionArticulos {
 		}
 		a.setUnidadesStock(nuevoStock);
 		return articulosDao.modificaArticulo(a);
+	}
+
+
+
+	public List<Articulo> articulos() {
+		return articulosDao.articulos();
 	}
 
 }

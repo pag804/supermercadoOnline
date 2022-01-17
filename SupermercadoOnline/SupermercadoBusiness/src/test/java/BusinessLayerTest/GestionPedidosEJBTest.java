@@ -47,7 +47,7 @@ public class GestionPedidosEJBTest {
 	public void setUp() throws Exception {
 		//Creamos 3 mocks
 		articulosDaoMock = mock(IArticulosDAO.class);
-		usuariosDaoMock = mock(IUsuariosDAO.class) ;
+		usuariosDaoMock = mock(IUsuariosDAO.class);
 		pedidosDaoMock = mock(IPedidosDAO.class);
 		
 		u1 = new Usuario("Jose Manuel Garcia Sanchez", "27516415G",  "josemanuel@gmail.com", "Calle Castilla 36", 0, new ArrayList<Pedido>());
